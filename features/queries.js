@@ -63,10 +63,9 @@ module.exports = function(controller) {
   //   });
   // });
 
-  setTimeout(controller.on('welcome_back', async(bot, message) => {
+  controller.on('welcome_back', async(bot, message) => {
     await bot.reply(message, 'Hello Human! How can I help out?');
-  }), 2000);
-
+  });
   
 
 
