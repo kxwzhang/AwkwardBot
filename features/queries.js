@@ -18,54 +18,6 @@ module.exports = function(controller) {
   //     }, 1000);
   // });
 
-  // controller.hears(new RegExp('alex'), 'message', async (bot, message) => {
-  //   await bot.reply(message,{
-  //     text: 'Here are some quick replies',
-  //     quick_replies: [
-  //       {
-  //         title: 'Resume',
-  //         payload: 'alexResume',
-  //       },
-  //       {
-  //         title: 'Education',
-  //         payload: 'alexEducation',
-  //       },
-  //       {
-  //         title: 'Tech Stack',
-  //         payload: 'alexTech',
-  //       },
-  //       {
-  //         title: 'Projects',
-  //         payload: 'alexProjects',
-  //       },
-  //     ]
-  //   });
-  // });
-
-  // controller.hears(new RegExp('kevin'), 'message', async (bot, message) => {
-  //   await bot.reply(message,{
-  //     text: 'Here are some quick replies',
-  //     quick_replies: [
-  //       {
-  //         title: 'Resume',
-  //         payload: 'kevinResume',
-  //       },
-  //       {
-  //         title: 'Education',
-  //         payload: 'kevinEducation',
-  //       },
-  //       {
-  //         title: 'Tech Stack',
-  //         payload: 'kevinTech',
-  //       },
-  //       {
-  //         title: 'Projects',
-  //         payload: 'kevinProjects',
-  //       },
-  //     ]
-  //   });
-  // });
-
   controller.on('welcome_back', async(bot, message) => {
     await bot.reply(message, {
       text: 'Hello Human! Which of my creators would you like to know more about?',
@@ -86,8 +38,6 @@ module.exports = function(controller) {
     });
   });
   
-
-
   controller.hears(new RegExp('winfred|kevin|alex', 'i'), 'message', async (bot, message) => {
     // Remove quotes
     const person = JSON.stringify(message.text).replace(/['"]+/g, '');
@@ -102,30 +52,36 @@ module.exports = function(controller) {
     // get keys of first layer to show as quick_replies
     // key into each sub-layer and get all keys in that layer to display as quick replies
 
-
-
     await bot.reply(message,{
       text: `What would you like to learn about ${personName}?`,
       quick_replies: [
         {
           title: 'Basics',
-          payload: `${personName}'s Basics`,
+          payload: `${personName} Basics`,
         },
         {
-          title: 'Resume',
-          payload: `${personName}'s Resume`,
+          title: 'Work',
+          payload: `${personName} Work`,
+        },
+        {
+          title: 'Volunteer',
+          payload: `${personName} Volunteer`,
         },
         {
           title: 'Education',
-          payload: `${personName}'s Education`,
+          payload: `${personName} Education`,
         },
         {
-          title: 'Tech Stack',
-          payload: `${personName}'s Tech`,
+          title: 'Skills',
+          payload: `${personName} Skills`,
         },
         {
-          title: 'Projects',
-          payload: `${personName}'s Projects`,
+          title: 'Languages',
+          payload: `${personName} Languages`,
+        },
+        {
+          title: 'Interests',
+          payload: `${personName} Interests`,
         },
       ]
     });
