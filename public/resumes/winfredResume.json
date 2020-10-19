@@ -1,0 +1,84 @@
+{
+  "basics": {
+    "about": {
+      "name": "Winfred Huang",
+      "label": "Full Stack Software Engineer", 
+      "summary": "Hi, my name is Winfred Huang and I love being creative through coding. I pursued a Computer Engineering degree at University of California - Santa Barbara. With my technical and artistic backgrounds, I've enjoyed building creative projects, like a Tumblr clone, Somerslt." 
+    },
+    "contact": {
+      "email": "huang.winfred21@gmail.com",
+      "phone": "(415)-806-8682",
+      "website": "https://winfredhuang.com/"
+    },
+    "location": {
+      "city": "San Francisco",
+      "countryCode": "US",
+      "region": "California"
+    },
+    "profiles": [{
+      "network": "LinkedIn",
+      "username": "winfred-huang",
+      "url": "https://www.linkedin.com/in/winfred-huang/"
+    }, 
+    {
+      "network": "GitHub",
+      "username": "winterfreddy",
+      "url": "https://github.com/winterfreddy"
+    }]
+  },
+  "work": [],
+  "volunteer": [],
+  "education": [{
+    "institution": "University of California, Santa Barbara",
+    "area": "Computer Engineering",
+    "studyType": "Bachelor of Science",
+    "startDate": "2014-09",
+    "endDate": "2019-06",
+    "gpa": "N/A"
+  }, 
+  {
+    "institution": "App Academy",
+    "area": "Software Engineering",
+    "studyType": "Certification",
+    "startDate": "2020-06",
+    "endDate": "2020-09"
+  }],
+  "skills": [{
+    "name": "Web Development",
+    "keywords": [
+      "HTML",
+      "CSS",
+      "SQL",
+      "Javascript",
+      "React",
+      "Redux",
+      "Ruby",
+      "Ruby on Rails",
+      "Node",
+      "Express",
+      "MongoDB",
+      "PostgreSQL",
+      "SQLite3",
+      "jQuery",
+      "Webpack",
+      "Git", 
+      "Heroku",
+      "Python",
+      "Java",
+      "C++",
+      "AWS",
+      "FireBase"
+    ]
+  }],
+  "languages": [{
+    "language": "English",
+    "fluency": "Native speaker"
+  }],
+  "interests": [{
+    "name": "Drawing",
+    "keywords": [
+      "Sports Cars",
+      "Techy"
+    ]
+  }]
+}

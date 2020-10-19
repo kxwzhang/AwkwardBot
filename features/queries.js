@@ -1,4 +1,7 @@
 const { BotkitConversation } = require("botkit");
+const alexResume = require('../public/resumes/alexResume.json');
+const kevinResume = require('../public/resumes/kevinResume.json');
+const winfredResume = require('../public/resumes/winfredResume.json');
 
 module.exports = function(controller) {
   let pageLoad = new BotkitConversation('pageload', controller);
@@ -14,55 +17,6 @@ module.exports = function(controller) {
   //       await bot.reply(message, 'Hi! My name is Alex, what do you want to know about me?');
   //     }, 1000);
   // });
-
-  // controller.hears(new RegExp('alex'), 'message', async (bot, message) => {
-  //   await bot.reply(message,{
-  //     text: 'Here are some quick replies',
-  //     quick_replies: [
-  //       {
-  //         title: 'Resume',
-  //         payload: 'alexResume',
-  //       },
-  //       {
-  //         title: 'Education',
-  //         payload: 'alexEducation',
-  //       },
-  //       {
-  //         title: 'Tech Stack',
-  //         payload: 'alexTech',
-  //       },
-  //       {
-  //         title: 'Projects',
-  //         payload: 'alexProjects',
-  //       },
-  //     ]
-  //   });
-  // });
-
-  // controller.hears(new RegExp('kevin'), 'message', async (bot, message) => {
-  //   await bot.reply(message,{
-  //     text: 'Here are some quick replies',
-  //     quick_replies: [
-  //       {
-  //         title: 'Resume',
-  //         payload: 'kevinResume',
-  //       },
-  //       {
-  //         title: 'Education',
-  //         payload: 'kevinEducation',
-  //       },
-  //       {
-  //         title: 'Tech Stack',
-  //         payload: 'kevinTech',
-  //       },
-  //       {
-  //         title: 'Projects',
-  //         payload: 'kevinProjects',
-  //       },
-  //     ]
-  //   });
-  // });
-
 
   controller.hears(new RegExp('winfred|kevin|alex', 'i'), 'message', async (bot, message) => {
     let person = JSON.stringify(message.text);
@@ -84,6 +38,43 @@ module.exports = function(controller) {
         {
           title: 'Projects',
           payload: `${person.slice(1, person.length - 1)}Projects`,
+        },
+      ]
+    });
+  });
+
+  controller.hears(new RegExp('Resume', 'i'), 'message', async (bot, message) => {
+    let person = JSON.stringify(message.text);
+    await bot.reply(message,{
+      text: `Here are some quick replies for ${person.slice(1, person.length - 1)}'s Resume`,
+      quick_replies: [
+        {
+          title: 'Basics',
+          payload: `${person.slice(1, person.length - 1)}Basics`,
+        },
+        {
+          title: 'Work',
+          payload: `${person.slice(1, person.length - 1)}Work`,
+        },
+        {
+          title: 'Volunteer',
+          payload: `${person.slice(1, person.length - 1)}Volunteer`,
+        },
+        {
+          title: 'Education',
+          payload: `${person.slice(1, person.length - 1)}Education`,
+        },
+        {
+          title: 'Skills',
+          payload: `${person.slice(1, person.length - 1)}Skills`,
+        },
+        {
+          title: 'Languages',
+          payload: `${person.slice(1, person.length - 1)}Languages`,
+        },
+        {
+          title: 'Interests',
+          payload: `${person.slice(1, person.length - 1)}Interests`,
         },
       ]
     });
