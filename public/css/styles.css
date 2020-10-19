@@ -198,6 +198,8 @@ a.button:hover {
   cursor: pointer;
   color: blue;
   font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
 }
 #message_window form {
   display: flex;
