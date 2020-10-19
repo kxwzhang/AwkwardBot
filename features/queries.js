@@ -63,6 +63,11 @@ module.exports = function(controller) {
   //   });
   // });
 
+  controller.on('welcome_back', async(bot, message) => {
+    await bot.reply(message, 'Hello Human! How can I help out?');
+  });
+  
+
 
   controller.hears(new RegExp('winfred|kevin|alex', 'i'), 'message', async (bot, message) => {
     let person = JSON.stringify(message.text);
