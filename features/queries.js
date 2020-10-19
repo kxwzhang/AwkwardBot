@@ -96,6 +96,9 @@ module.exports = function(controller) {
     // if personInfo length is 1, ask what info the user wants
     // if personInfo length is 2, dive deeper into that info
 
+    // get keys of first layer to show as quick_replies
+    // key into each sub-layer and get all keys in that layer to display as quick replies
+
 
 
     await bot.reply(message,{
