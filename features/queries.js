@@ -64,31 +64,62 @@ module.exports = function(controller) {
   // });
 
   controller.on('welcome_back', async(bot, message) => {
-    await bot.reply(message, 'Hello Human! How can I help out?');
+    await bot.reply(message, {
+      text: 'Hello Human! Which of my creators would you like to know more about?',
+      quick_replies: [
+        {
+          title: 'Alex',
+          payload: 'Alex'
+        },
+        {
+          title: 'Winfred',
+          payload: 'Winfred'
+        },
+        {
+          title: 'Kevin',
+          payload: 'Kevin'
+        }
+      ]
+    });
   });
   
 
 
   controller.hears(new RegExp('winfred|kevin|alex', 'i'), 'message', async (bot, message) => {
-    let person = JSON.stringify(message.text);
+    // Remove quotes
+    const person = JSON.stringify(message.text).replace(/['"]+/g, '');
+    const personInfo = person.split(" "); 
+    const personName = personInfo[0];
+    // check if the first word is their name
+    // if it's not, it won't show as "Person's Resume"
+
+    // if personInfo length is 1, ask what info the user wants
+    // if personInfo length is 2, dive deeper into that info
+
+
+
     await bot.reply(message,{
-      text: `Here are some quick replies for ${person.slice(1, person.length - 1)}`,
+      text: `What would you like to learn about ${personName}?`,
       quick_replies: [
         {
+          title: 'Basics',
+          payload: `${personName}'s Basics`,
+        },
+        {
           title: 'Resume',
-          payload: `${person.slice(1, person.length - 1)}Resume`,
+          payload: `${personName}'s Resume`,
         },
         {
           title: 'Education',
-          payload: `${person.slice(1, person.length - 1)}Education`,
+          payload: `${personName}'s Education`,
         },
         {
           title: 'Tech Stack',
-          payload: `${person.slice(1, person.length - 1)}Tech`,
+          payload: `${personName}'s Tech`,
         },
         {
           title: 'Projects',
-          payload: `${person.slice(1, person.length - 1)}Projects`,
+          payload: `${personName}'s Projects`,
         },
       ]
     });
