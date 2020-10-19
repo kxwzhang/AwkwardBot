@@ -4,10 +4,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
         <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.4/dist/showdown.min.js"></script>
         <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/sidebar.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body >
       <div class="wrapper">
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Clients</a>
+          <a href="#">Contact</a>
+        </div>
 
         <div id="message_window">
             <div class="disconnected">
@@ -17,7 +25,8 @@
                 Offline! Reload to reconnect.
             </div>
             <div class="powered_by">
-              Powered by <a href="https://botkit.ai" target="_blank" title="Building Blocks for Building Bots"><img src="/botkit_icon.png" width="15" height="15" alt="Botkit Logo" /> AwkwardBot</a>
+              <div class="bar-icon" onclick="openNav()">&#9776;</div>
+              AwkwardBot
             </div>
             <section>
                 <div id="message_list">
@@ -59,5 +68,14 @@
         </div>
         </div>
         <script src="/client.js"></script>
+        <script>
+          function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+          }
+
+          function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+          }
+        </script>
     </body>
 </html>
