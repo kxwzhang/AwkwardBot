@@ -44,37 +44,37 @@ module.exports = function(controller) {
   });
 
   controller.hears(new RegExp('Resume', 'i'), 'message', async (bot, message) => {
-    let person = JSON.stringify(message.text);
+    // let person = JSON.stringify(message.text);
     await bot.reply(message,{
-      text: `Here are some quick replies for ${person.slice(1, person.length - 1)}'s Resume`,
+      text: `Here are some quick replies for Resume`,
       quick_replies: [
         {
           title: 'Basics',
-          payload: `${person.slice(1, person.length - 1)}Basics`,
+          payload: kevinResume.basics,
         },
         {
           title: 'Work',
-          payload: `${person.slice(1, person.length - 1)}Work`,
+          payload: kevinResume.work,
         },
         {
           title: 'Volunteer',
-          payload: `${person.slice(1, person.length - 1)}Volunteer`,
+          payload: kevinResume.volunteer,
         },
         {
           title: 'Education',
-          payload: `${person.slice(1, person.length - 1)}Education`,
+          payload: kevinResume.education,
         },
         {
           title: 'Skills',
-          payload: `${person.slice(1, person.length - 1)}Skills`,
+          payload: kevinResume.skills,
         },
         {
           title: 'Languages',
-          payload: `${person.slice(1, person.length - 1)}Languages`,
+          payload: kevinResume.languages,
         },
         {
           title: 'Interests',
-          payload: `${person.slice(1, person.length - 1)}Interests`,
+          payload: kevinResume.interests,
         },
       ]
     });
