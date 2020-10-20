@@ -14,7 +14,6 @@ html {
 
 .wrapper {
   position: relative;
-  max-width: 1000px;
   margin: 0 auto;
 }
 .wrapper:after {
@@ -154,11 +153,14 @@ a.button:hover {
 }
 #message_window .powered_by {
   flex-shrink: 0;
-  text-align: center;
   border-bottom: 1px solid #CCC;
-  font-size: 14px;
+  font-size: 25px;
   padding: 0.25rem;
   color: #666;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #message_window .powered_by a {
   text-decoration: none;
@@ -195,6 +197,8 @@ a.button:hover {
   cursor: pointer;
   color: blue;
   font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
 }
 #message_window form {
   display: flex;

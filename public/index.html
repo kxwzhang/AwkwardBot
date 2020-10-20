@@ -4,10 +4,36 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
         <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.4/dist/showdown.min.js"></script>
         <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/sidebar.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/33497c357e.js" crossorigin="anonymous"></script>
     </head>
     <body >
       <div class="wrapper">
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <button class="collapsible">Alex Choy</button>
+          <div class="content">
+            <a href="https://alex-choy.com/" target="_blank"><i class="fas fa-globe"></i></a>
+            <a href="https://www.linkedin.com/in/alexchoy179/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://angel.co/u/alex-choy-5" target="_blank"><i class="fab fa-angellist"></i></a>
+            <a href="https://github.com/alex-choy" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+          <button class="collapsible">Winfred Huang</button>
+          <div class="content">
+            <a href="https://winfredhuang.com/" target="_blank"><i class="fas fa-globe"></i></a>
+            <a href="https://www.linkedin.com/in/winfred-huang/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://angel.co/u/winfred-huang" target="_blank"><i class="fab fa-angellist"></i></a>
+            <a href="https://github.com/winterfreddy" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+          <button class="collapsible">Kevin Zhang</button>
+          <div class="content">
+            <a href="https://www.kevzh.com" target="_blank"><i class="fas fa-globe"></i></a>
+            <a href="https://www.linkedin.com/in/kevinxzhang/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://angel.co/u/kevinxzhang" target="_blank"><i class="fab fa-angellist"></i></a>
+            <a href="https://github.com/kxwzhang" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
 
         <div id="message_window">
             <div class="disconnected">
@@ -17,7 +43,8 @@
                 Offline! Reload to reconnect.
             </div>
             <div class="powered_by">
-              Powered by <a href="https://botkit.ai" target="_blank" title="Building Blocks for Building Bots"><img src="/botkit_icon.png" width="15" height="15" alt="Botkit Logo" /> AwkwardBot</a>
+              <div class="bar-icon" onclick="openNav()">&#9776;</div>
+              AwkwardBot
             </div>
             <section>
                 <div id="message_list">
@@ -59,5 +86,29 @@
         </div>
         </div>
         <script src="/client.js"></script>
+        <script>
+          function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+          }
+
+          function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+          }
+
+          var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                  content.style.maxHeight = null;
+                } else {
+                  content.style.maxHeight = content.scrollHeight + "px";
+                }
+              });
+            }
+        </script>
     </body>
 </html>
