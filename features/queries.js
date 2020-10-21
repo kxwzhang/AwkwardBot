@@ -4,6 +4,11 @@ const kevinResume = require('../public/resumes/kevinResume.json');
 const winfredResume = require('../public/resumes/winfredResume.json');
 
 module.exports = function(controller) {
+  const resumes = { 
+    'alexResume': alexResume,
+    'kevinResume': kevinResume,
+    'winfredResume': winfredResume
+  };
   // Displays a message when a user connects
   controller.on('welcome_back', async(bot, message) => {
     await bot.reply(message, {
@@ -26,6 +31,7 @@ module.exports = function(controller) {
   });
 
   function generateQuickReplies(resume, name) {
+    console.log('Resume: ', resume);
     const quickReplies = Object.keys(resume).map((key) => {
       let capKey = key.charAt(0).toUpperCase() + key.slice(1);
       return { title: capKey, payload: `${name} ${capKey}` };
@@ -38,12 +44,13 @@ module.exports = function(controller) {
     ["message"],
     async (bot, message) => {
       let [name, info] = message.text.split(" ");
+      resumeName = name.toLowerCase();
       if (!info) { // just the name, no other info
         // generate quick replies
         // bot response
         await bot.reply(message, {
           text: `What would you like to learn about ${name}?`,
-          quick_replies: generateQuickReplies(alexResume, name)
+          quick_replies: generateQuickReplies(resumes[`${resumeName}Resume`], name)
         });
       } else { // key into a resume, either top-level or inside basics
           info = info.toLowerCase(); // somehow it's basics
@@ -52,7 +59,7 @@ module.exports = function(controller) {
         if (info === 'basics') {
           await bot.reply(message, {
             text: `What would you like to learn about ${name}?`,
-            quick_replies: generateQuickReplies(alexResume['basics'], name),
+            quick_replies: generateQuickReplies(resumes[`${resumeName}Resume`]['basics'], name),
           });
         } else {
           await bot.reply(message, { type: "typing" });
@@ -60,10 +67,10 @@ module.exports = function(controller) {
           setTimeout(async () => {
             let response;
             // Check if we need to key into 'basics' or top level keys
-            if (alexResume['basics'][info]) {
-              response = alexResume['basics'][info]; // refactor to run about/contact/location/profiles or bottom level
+            if (resumes[`${resumeName}Resume`]['basics'][info]) {
+              response = resumes[`${resumeName}Resume`]['basics'][info]; // refactor to run about/contact/location/profiles or bottom level
             } else {
-              response = alexResume[info]; // refactor to run about/contact/location/profiles or bottom level
+              response = resumes[`${resumeName}Resume`][info]; // refactor to run about/contact/location/profiles or bottom level
             }
             await bot.changeContext(message.reference);
             await bot.reply(message, JSON.stringify(response));
