@@ -1,0 +1,96 @@
+{
+  "basics": {
+    "about": {
+      "name": "Alex Choy",
+      "label": "Full Stack Software Engineer",
+      "summary": "I am a full stack web developer, experienced with React, Redux, JavaScript, Java, and Ruby on Rails. Learning new technologies is my passion, and developing a new feature always excites me."
+    },
+    "contact": {
+      "email": "alex.choy.179@gmail.com",
+      "phone": "(415)-312-5152",
+      "website": "https://www.alex-choy.com/"
+    },
+    "location": {
+      "city": "San Francisco",
+      "countryCode": "US",
+      "region": "California"
+    },
+    "profiles": [{
+      "network": "LinkedIn",
+      "username": "alexchoy179",
+      "url": "https://www.linkedin.com/in/alexchoy179/"
+    }, 
+    {
+      "network": "GitHub",
+      "username": "alex-choy",
+      "url": "https://github.com/alex-choy"
+    }]
+  },
+  "work": [{
+    "company": "Green Apples Education",
+    "position": "Programming Instructor / Supervisor",
+    "startDate": "2017-09",
+    "endDate": "2019-01",
+    "summary": "Taught multiple programming courses, from Scratch to AP Java, to grade school students, where students demonstrated their newfound knowledge through an end-of-course project or test"
+  }, 
+  {
+    "company": "Coding4Youth",
+    "position": "Full Stack Development Intern",
+    "startDate": "2017-09",
+    "endDate": "2019-01",
+    "summary": "Developed an instructor rating system with Rails 4, ensuring instructors are qualified to teach programming to students and are meeting organization expectations"
+  }],
+  "volunteer": [],
+  "education": [{
+    "institution": "San Jose State University",
+    "area": "Computer Science",
+    "studyType": "Bachelor of Science",
+    "startDate": "2014-08",
+    "endDate": "2019-05",
+    "gpa": "3.7"
+  }, 
+  {
+    "institution": "App Academy",
+    "area": "Software Engineering",
+    "studyType": "Certification",
+    "startDate": "2020-06",
+    "endDate": "2020-09"
+  }],
+  "skills": [{
+    "name": "Web Development",
+    "keywords": [
+      "HTML",
+      "CSS",
+      "SQL",
+      "Javascript",
+      "React",
+      "Redux",
+      "Ruby",
+      "Ruby on Rails",
+      "Node",
+      "Express",
+      "MongoDB",
+      "PostgreSQL",
+      "SQLite3",
+      "jQuery",
+      "Webpack",
+      "Git", 
+      "Heroku",
+      "Python",
+      "Java",
+      "d3.js",
+      "AWS"
+    ]
+  }],
+  "languages": [{
+    "language": "English",
+    "fluency": "Native speaker"
+  }],
+  "interests": [{
+    "name": "Photography",
+    "keywords": [
+      "Wildlife",
+      "Landscape"
+    ]
+  }]
+}

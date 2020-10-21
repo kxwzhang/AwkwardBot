@@ -1,0 +1,91 @@
+{
+  "basics": {
+    "about": {
+      "name": "Kevin Zhang",
+      "label": "Full Stack Software Engineer", 
+      "summary": "I am a software engineer with a B.S. in Statistical Data Science. Engineering was always something I enjoyed, whether it was building Legos when I was younger or constructing statistical models to perform predictive analysis." 
+    },
+    "contact": {
+      "email": "kevin.xue.zhang@gmail.com",
+      "phone": "(510)-386-9890",
+      "website": "https://www.kevzh.com/"
+    },
+    "location": {
+      "city": "Newark",
+      "countryCode": "US",
+      "region": "California"
+    },
+    "profiles": [{
+      "network": "LinkedIn",
+      "username": "kevinxzhang",
+      "url": "https://www.linkedin.com/in/kevinxzhang/"
+    }, 
+    {
+      "network": "GitHub",
+      "username": "kxwzhang",
+      "url": "https://github.com/kxwzhang"
+    }]
+  },
+  "work": [],
+  "volunteer": [{
+    "organization": "UC Santa Barbara Quizbowl Club",
+    "position": "Event Organizer",
+    "startDate": "2018-09",
+    "endDate": "2019-06",
+    "summary": "Managed fundraisers and quizbowl tournaments for club members. Also hosted recruitment fairs to grow the club by over 300%"
+  }],
+  "education": [{
+    "institution": "University of California, Santa Barbara",
+    "area": "Statistical Data Science",
+    "studyType": "Bachelor of Science",
+    "startDate": "2015-09",
+    "endDate": "2019-06",
+    "gpa": "3.3"
+  }, 
+  {
+    "institution": "App Academy",
+    "area": "Software Engineering",
+    "studyType": "Certification",
+    "startDate": "2020-06",
+    "endDate": "2020-09"
+  }],
+  "skills": [{
+    "name": "Web Development",
+    "keywords": [
+      "HTML",
+      "CSS",
+      "SQL",
+      "Javascript",
+      "React",
+      "Redux",
+      "Ruby",
+      "Ruby on Rails",
+      "Node",
+      "Express",
+      "MongoDB",
+      "PostgreSQL",
+      "SQLite3",
+      "jQuery",
+      "Webpack",
+      "Git", 
+      "Heroku",
+      "Python",
+      "Java",
+      "d3.js",
+      "p5.js",
+      "Firebase",
+      "AWS"
+    ]
+  }],
+  "languages": [{
+    "language": "English",
+    "fluency": "Native speaker"
+  }],
+  "interests": [{
+    "name": "Rock Climbing",
+    "keywords": [
+      "Gym",
+      "Weight Lifting"
+    ]
+  }]
+}
