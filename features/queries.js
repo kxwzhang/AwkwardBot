@@ -92,25 +92,34 @@ module.exports = function(controller) {
         });
       } else { // key into a resume, either top-level or inside basics
           info = info.toLowerCase(); // somehow it's basics
-          console.log("info", info);
-          console.log("alexResume[info]", alexResume[info]);
-          console.log("alexResume.basics[info]", alexResume['basics'][info]);
+          // console.log("info", info);
+          // console.log("alexResume[info]", alexResume[info]);
+          // console.log("alexResume.basics[info]", alexResume['basics'][info]);
         // key into the 'basics' of resume
         if (info === 'basics') {
           // bot response ---> alex[about]
-          console.log('hitting info === basics');
+          // console.log('hitting info === basics');
           await bot.reply(message, {
             text: `What would you like to learn about ${name}?`,
             quick_replies: generateQuickReplies(alexResume['basics'], name),
           });
         } else {
-          console.log('info !== basics I think');
+          // console.log('info !== basics I think');
           await bot.reply(message, { type: "typing" });
           setTimeout(async () => {
-            // will have to reset context because turn has now ended.
-            let response = alexResume[info]; // refactor to run about/contact/location/profiles or bottom level
+            let response;
+            if (alexResume['basics'][info]) {
+              response = alexResume['basics'][info]; // refactor to run about/contact/location/profiles or bottom level
+            } else {
+              response = alexResume[info]; // refactor to run about/contact/location/profiles or bottom level
+            }
             await bot.changeContext(message.reference);
-            await bot.reply(message, Object.keys(JSON.parse(response)));
+            await bot.reply(message, JSON.stringify(response));
+            // console.log("alexResume[info]",alexResume['basics'][info])
+            // // will have to reset context because turn has now ended.
+            // let response = alexResume[info]; // refactor to run about/contact/location/profiles or bottom level
+            // await bot.changeContext(message.reference);
+            // await bot.reply(message, Object.keys(JSON.parse(response)));
           }, 1000);
         }
       }
