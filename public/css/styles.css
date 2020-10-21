@@ -367,6 +367,11 @@ a.button:hover {
   margin-left: 440px;
 }
 
+#message_list .message p:hover {
+  color: pink;
+  cursor: pointer;
+}
+
 /* Styling for Dropdown Button */
 /* Dropdown Button */
 .dropbtn {

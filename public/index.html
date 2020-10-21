@@ -36,8 +36,8 @@
         </div>
 
         <div class='text-to-speech'>
-          <button id="speak">Play</button>
-          <button id="stop">Stop</button>
+          <!-- <button id="speak">Play</button> -->
+          <button id="stop">Stop Text to Speech</button>
           <div class="dropdown">
             <button onclick="dropDownFunc()" class="dropbtn">Dropdown</button>
             <div id="myDropdown" class="dropdown-content">
@@ -124,22 +124,65 @@
             }
         </script>
         <script>
+          // Scripts for Dropdown
           function dropDownFunc() {
             document.getElementById("myDropdown").classList.toggle("show");
           }
           // Close the dropdown menu if the user clicks outside of it
-          window.onclick = function (event) {
-            if (!event.target.matches('.dropbtn')) {
-              var dropdowns = document.getElementsByClassName("dropdown-content");
-              var i;
-              for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                  openDropdown.classList.remove('show');
-                }
-              }
+          // window.onclick = function (event) {
+          //   if (!event.target.matches('.dropbtn')) {
+          //     var dropdowns = document.getElementsByClassName("dropdown-content");
+          //     var i;
+          //     for (i = 0; i < dropdowns.length; i++) {
+          //       var openDropdown = dropdowns[i];
+          //       if (openDropdown.classList.contains('show')) {
+          //         openDropdown.classList.remove('show');
+          //       }
+          //     }
+          //   }
+          // }
+        </script>
+        <script>
+          //Scripts for Text to Speech
+          const msg = new SpeechSynthesisUtterance();
+          let voices = [];
+          const voicesDropdown = document.querySelector('[name="voice"]');
+          // const speakButton = document.querySelector('#speak');
+          const stopButton = document.querySelector('#stop');
+          const messageList = document.querySelector('#message_list');
+
+          // render all possible voices in a dropdown
+          function populateVoices() {
+            voices = this.getVoices();
+            voicesDropdown.innerHTML = voices.filter(voice => voice.lang.includes('en'))
+              .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
+              .join('');
+          }
+
+          // chosen voice will update to find the correct voice linked
+          function setVoice() {
+            msg.voice = voices.find(voice => voice.name === this.value);
+            toggle();
+          }
+
+          function toggle(stop = true) {
+            speechSynthesis.cancel();
+            if (stop) {
+              speechSynthesis.speak(msg);
             }
           }
+
+          function playSound(e) {
+            msg.text = e.target.innerHTML;
+            toggle();
+          }
+
+          messageList.addEventListener('click', playSound);
+          speechSynthesis.addEventListener('voiceschanged', populateVoices);
+          voicesDropdown.addEventListener('change', setVoice);
+          // speakButton.addEventListener('click', toggle);
+          stopButton.addEventListener('click', () => toggle(false));
+
         </script>
     </body>
 </html>
