@@ -3,9 +3,16 @@
   box-sizing: border-box;
 }
 
+@media only screen and (max-width: 370px) {
+  html, body {
+    display: flex;
+  }
+}
+
 body,
 html {
-  margin: 0;
+  /* display: flex; */
+  margin: auto;
   padding: 0;
   font-size: 18px;
   background-color: #FFF;
@@ -175,6 +182,7 @@ a.button:hover {
   flex-direction: column-reverse;
   display: flex;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 #message_window section div div {
   margin: 0.25rem;
@@ -198,8 +206,16 @@ a.button:hover {
   color: blue;
   font-weight: bold;
   font-size: 20px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
 }
+
+#message_window footer button:hover {
+  color: green;
+}
+
 #message_window form {
   display: flex;
   margin: 0;
@@ -217,6 +233,7 @@ a.button:hover {
   width: auto;
   display: inline-block;
   max-width: 75%;
+  line-break: anywhere;
 }
 #message_window .file_attachment {
   background: #F0F0F0;

@@ -31,7 +31,6 @@ module.exports = function(controller) {
   });
 
   function generateQuickReplies(resume, name) {
-    console.log('Resume: ', resume);
     const quickReplies = Object.keys(resume).map((key) => {
       let capKey = key.charAt(0).toUpperCase() + key.slice(1);
       return { title: capKey, payload: `${name} ${capKey}` };
@@ -40,7 +39,7 @@ module.exports = function(controller) {
   }
 
   controller.hears(
-    async (message) => message.text && new RegExp("winfred|kevin|alex", "i"),
+    async (message) => /*message.text && */ new RegExp("winfred|kevin|alex", "i"),
     ["message"],
     async (bot, message) => {
       let [name, info] = message.text.split(" ");
@@ -53,7 +52,7 @@ module.exports = function(controller) {
           quick_replies: generateQuickReplies(resumes[`${resumeName}Resume`], name)
         });
       } else { // key into a resume, either top-level or inside basics
-          info = info.toLowerCase(); // somehow it's basics
+          info = info.toLowerCase(); 
         
         // display options within the 'basics'
         if (info === 'basics') {
@@ -74,6 +73,28 @@ module.exports = function(controller) {
             }
             await bot.changeContext(message.reference);
             await bot.reply(message, JSON.stringify(response));
+            setTimeout( async () => {
+              await bot.reply(message, { type: "typing" });
+            }, 1500);
+            setTimeout( async () => {
+              await bot.reply(message, {
+                text: 'Which of my creators would you like to know more about?',
+                quick_replies: [
+                  {
+                    title: 'Alex',
+                    payload: 'Alex'
+                  },
+                  {
+                    title: 'Winfred',
+                    payload: 'Winfred'
+                  },
+                  {
+                    title: 'Kevin',
+                    payload: 'Kevin'
+                  }
+                ]
+              });
+            }, 2500);
           }, 1000);
         }
       }
