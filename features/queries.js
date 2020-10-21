@@ -31,7 +31,6 @@ module.exports = function(controller) {
   });
 
   function generateQuickReplies(resume, name) {
-    console.log('Resume: ', resume);
     const quickReplies = Object.keys(resume).map((key) => {
       let capKey = key.charAt(0).toUpperCase() + key.slice(1);
       return { title: capKey, payload: `${name} ${capKey}` };
@@ -40,7 +39,7 @@ module.exports = function(controller) {
   }
 
   controller.hears(
-    async (message) => message.text && new RegExp("winfred|kevin|alex", "i"),
+    async (message) => /*message.text && */ new RegExp("winfred|kevin|alex", "i"),
     ["message"],
     async (bot, message) => {
       let [name, info] = message.text.split(" ");
@@ -74,6 +73,7 @@ module.exports = function(controller) {
             }
             await bot.changeContext(message.reference);
             await bot.reply(message, JSON.stringify(response));
+            // in here?
           }, 1000);
         }
       }
