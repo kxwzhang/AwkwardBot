@@ -36,7 +36,29 @@ module.exports = function(controller) {
       return { title: capKey, payload: `${name} ${capKey}` };
     });
     return quickReplies;
-  }
+  };
+
+  //  {
+  //     "name": "Alex Choy",
+  //     "label": "Full Stack Software Engineer",
+  //     "summary": "I am a full stack web developer, experienced with React, Redux, JavaScript, Java, and Ruby on Rails. Learning new technologies is my passion, and developing a new feature always excites me."
+  //   }
+
+  // [{
+  //   "language": "English",
+  //   "fluency": "Native speaker"
+  // }]
+
+  
+  function mapResume(response) {
+    let formattedResponse = "";
+    if (response instanceof Array && !response.length) return "No information found.";
+    for(const key in response) {
+      // response[key] => gives the key
+
+    }
+    return formattedResponse;
+  };
 
   controller.hears(
     async (message) => /*message.text && */ new RegExp("winfred|kevin|alex", "i"),
@@ -57,7 +79,7 @@ module.exports = function(controller) {
         // display options within the 'basics'
         if (info === 'basics') {
           await bot.reply(message, {
-            text: `What would you like to learn about ${name}?`,
+            text: `What basic information do you want to learn about ${name}?`,
             quick_replies: generateQuickReplies(resumes[`${resumeName}Resume`]['basics'], name),
           });
         } else {
@@ -72,7 +94,7 @@ module.exports = function(controller) {
               response = resumes[`${resumeName}Resume`][info]; // refactor to run about/contact/location/profiles or bottom level
             }
             await bot.changeContext(message.reference);
-            await bot.reply(message, JSON.stringify(response));
+            await bot.reply(message, mapResume(response));
             setTimeout( async () => {
               await bot.reply(message, { type: "typing" });
             }, 1500);
