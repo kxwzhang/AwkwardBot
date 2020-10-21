@@ -6,9 +6,9 @@
       "summary": "Hi, my name is Winfred Huang and I love being creative through coding. I pursued a Computer Engineering degree at University of California - Santa Barbara. With my technical and artistic backgrounds, I've enjoyed building creative projects, like a Tumblr clone, Somerslt." 
     },
     "contact": {
-      "email": "huang.winfred21@gmail.com",
-      "phone": "(415)-806-8682",
-      "website": "https://winfredhuang.com/"
+      "email": "<a href='mailto:huang.winfred21@gmail.com'>huang.winfred21@gmail.com</a>",
+      "phone": "<a href='tel:(415)-806-8682' target='_blank'>(415)-806-8682</a>",
+      "website": "<a href='https://winfredhuang.com/' target='_blank'>https://winfredhuang.com/</a>"
     },
     "location": {
       "city": "San Francisco",
@@ -18,12 +18,12 @@
     "profiles": [{
       "network": "LinkedIn",
       "username": "winfred-huang",
-      "url": "https://www.linkedin.com/in/winfred-huang/"
+      "url": "<a href='https://www.linkedin.com/in/winfred-huang/' target='_blank'>https://www.linkedin.com/in/winfred-huang/</a>"
     }, 
     {
       "network": "GitHub",
       "username": "winterfreddy",
-      "url": "https://github.com/winterfreddy"
+      "url": "<a href='https://github.com/winterfreddy' target='_blank'>https://github.com/winterfreddy</a>"
     }]
   },
   "work": [],

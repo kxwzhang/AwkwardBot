@@ -36,7 +36,30 @@ module.exports = function(controller) {
       return { title: capKey, payload: `${name} ${capKey}` };
     });
     return quickReplies;
-  }
+  };  
+
+  function generateText(formattedResponse, obj) {
+    if(formattedResponse.length) formattedResponse.push("<br>");
+    for (const key in obj) {
+      const keyName = key.charAt(0).toUpperCase() + key.slice(1);
+      obj[key] = obj[key] instanceof Array ? obj[key].join(", ") : obj[key];
+      formattedResponse.push(`${keyName}: ${obj[key]} \n`);
+    }
+  };
+
+  
+  function mapResume(response) {
+    let formattedResponse = [];
+    if (response instanceof Array ) {
+      if (!response.length) return "No information found.";
+      for (const obj of response) {
+        generateText(formattedResponse, obj);
+      }
+    } else {
+      generateText(formattedResponse, response);
+    }
+    return formattedResponse.join("\r\n\n");
+  };
 
   controller.hears(
     async (message) => /*message.text && */ new RegExp("winfred|kevin|alex", "i"),
@@ -57,7 +80,7 @@ module.exports = function(controller) {
         // display options within the 'basics'
         if (info === 'basics') {
           await bot.reply(message, {
-            text: `What would you like to learn about ${name}?`,
+            text: `What basic information do you want to learn about ${name}?`,
             quick_replies: generateQuickReplies(resumes[`${resumeName}Resume`]['basics'], name),
           });
         } else {
@@ -67,12 +90,12 @@ module.exports = function(controller) {
             let response;
             // Check if we need to key into 'basics' or top level keys
             if (resumes[`${resumeName}Resume`]['basics'][info]) {
-              response = resumes[`${resumeName}Resume`]['basics'][info]; // refactor to run about/contact/location/profiles or bottom level
+              response = resumes[`${resumeName}Resume`]['basics'][info];
             } else {
-              response = resumes[`${resumeName}Resume`][info]; // refactor to run about/contact/location/profiles or bottom level
+              response = resumes[`${resumeName}Resume`][info];
             }
             await bot.changeContext(message.reference);
-            await bot.reply(message, JSON.stringify(response));
+            await bot.reply(message, mapResume(response));
             setTimeout( async () => {
               await bot.reply(message, { type: "typing" });
             }, 1500);
