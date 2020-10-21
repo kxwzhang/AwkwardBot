@@ -9,6 +9,10 @@
   }
 }
 
+/* .darkmode html {
+  background: black;
+} */
+
 body,
 html {
   /* display: flex; */
@@ -268,7 +272,7 @@ a.button:hover {
 }
 #message_window .message.outgoing {
   float: right;
-  background: #a795ef;
+  background: #d80792;
   color: white;
 }
 #message_window #message_replies {
@@ -291,15 +295,15 @@ a.button:hover {
 #message_window #message_replies a {
   text-decoration: none;
   display: block;
-  border: 1px solid #a795ef;
-  color: #a795ef;
+  border: 1px solid #d80792;
+  color: #d80792;
   border-radius: 16px;
   padding: 0.25rem 1rem;
   font-size: 14px;
   cursor: pointer;
 }
 #message_window #message_replies a:hover {
-  background: #a795ef;
+  background: #c78aa1;
   color: #FFF;
 }
 

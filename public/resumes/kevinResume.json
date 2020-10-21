@@ -6,9 +6,9 @@
       "summary": "I am a software engineer with a B.S. in Statistical Data Science. Engineering was always something I enjoyed, whether it was building Legos when I was younger or constructing statistical models to perform predictive analysis." 
     },
     "contact": {
-      "email": "kevin.xue.zhang@gmail.com",
-      "phone": "(510)-386-9890",
-      "website": "https://www.kevzh.com/"
+      "email": "<a href='mailto:kevin.xue.zhang@gmail.com'>kevin.xue.zhang@gmail.com</a>",
+      "phone": "<a href='tel:510-386-9890' target='_blank'>(510)-386-9890</a>",
+      "website": "<a href='https://www.kevzh.com/' target='_blank'>https://www.kevzh.com/</a>"
     },
     "location": {
       "city": "Newark",
@@ -18,12 +18,12 @@
     "profiles": [{
       "network": "LinkedIn",
       "username": "kevinxzhang",
-      "url": "https://www.linkedin.com/in/kevinxzhang/"
+      "url": "<a href='https://www.linkedin.com/in/kevinxzhang/' target='_blank'>https://www.linkedin.com/in/kevinxzhang/</a>"
     }, 
     {
       "network": "GitHub",
       "username": "kxwzhang",
-      "url": "https://github.com/kxwzhang"
+      "url": "<a href='https://github.com/kxwzhang' target='_blank'>https://github.com/kxwzhang</a>"
     }]
   },
   "work": [],

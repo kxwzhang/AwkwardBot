@@ -6,9 +6,9 @@
       "summary": "I am a full stack web developer, experienced with React, Redux, JavaScript, Java, and Ruby on Rails. Learning new technologies is my passion, and developing a new feature always excites me."
     },
     "contact": {
-      "email": "alex.choy.179@gmail.com",
-      "phone": "(415)-312-5152",
-      "website": "https://www.alex-choy.com/"
+      "email": "<a href='mailto:alex.choy.179@gmail.com' target='_blank'>alex.choy.179@gmail.com</a>",
+      "phone": "<a href='tel:4153125152' target='_blank'>(415) 312-5152</a>",
+      "website": "<a href='https://www.alex-choy.com/' target='_blank'>www.alex-choy.com/</a>"
     },
     "location": {
       "city": "San Francisco",
@@ -18,12 +18,12 @@
     "profiles": [{
       "network": "LinkedIn",
       "username": "alexchoy179",
-      "url": "https://www.linkedin.com/in/alexchoy179/"
+      "url": "<a href='https://www.linkedin.com/in/alexchoy179/' target='_blank'>https://www.linkedin.com/in/alexchoy179/</a>"
     }, 
     {
       "network": "GitHub",
       "username": "alex-choy",
-      "url": "https://github.com/alex-choy"
+      "url": "<a href='https://github.com/alex-choy' target='_blank'>https://github.com/alex-choy</a>"
     }]
   },
   "work": [{

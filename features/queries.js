@@ -36,28 +36,29 @@ module.exports = function(controller) {
       return { title: capKey, payload: `${name} ${capKey}` };
     });
     return quickReplies;
+  };  
+
+  function generateText(formattedResponse, obj) {
+    if(formattedResponse.length) formattedResponse.push("<br>");
+    for (const key in obj) {
+      const keyName = key.charAt(0).toUpperCase() + key.slice(1);
+      obj[key] = obj[key] instanceof Array ? obj[key].join(", ") : obj[key];
+      formattedResponse.push(`${keyName}: ${obj[key]} \n`);
+    }
   };
-
-  //  {
-  //     "name": "Alex Choy",
-  //     "label": "Full Stack Software Engineer",
-  //     "summary": "I am a full stack web developer, experienced with React, Redux, JavaScript, Java, and Ruby on Rails. Learning new technologies is my passion, and developing a new feature always excites me."
-  //   }
-
-  // [{
-  //   "language": "English",
-  //   "fluency": "Native speaker"
-  // }]
 
   
   function mapResume(response) {
-    let formattedResponse = "";
-    if (response instanceof Array && !response.length) return "No information found.";
-    for(const key in response) {
-      // response[key] => gives the key
-
+    let formattedResponse = [];
+    if (response instanceof Array ) {
+      if (!response.length) return "No information found.";
+      for (const obj of response) {
+        generateText(formattedResponse, obj);
+      }
+    } else {
+      generateText(formattedResponse, response);
     }
-    return formattedResponse;
+    return formattedResponse.join("\r\n\n");
   };
 
   controller.hears(
@@ -89,9 +90,9 @@ module.exports = function(controller) {
             let response;
             // Check if we need to key into 'basics' or top level keys
             if (resumes[`${resumeName}Resume`]['basics'][info]) {
-              response = resumes[`${resumeName}Resume`]['basics'][info]; // refactor to run about/contact/location/profiles or bottom level
+              response = resumes[`${resumeName}Resume`]['basics'][info];
             } else {
-              response = resumes[`${resumeName}Resume`][info]; // refactor to run about/contact/location/profiles or bottom level
+              response = resumes[`${resumeName}Resume`][info];
             }
             await bot.changeContext(message.reference);
             await bot.reply(message, mapResume(response));
