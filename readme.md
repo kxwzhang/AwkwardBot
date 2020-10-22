@@ -10,3 +10,9 @@ Prompts are given to the user to choose an individual contributor, find their co
 * Dark mode layout
 * Mobile responsive
 * Text-to-voice option, with different voice options
+
+![main-page](https://github.com/kxwzhang/AwkwardBot/blob/main/public/images/main-page.png)
+
+![side-bar](https://github.com/kxwzhang/AwkwardBot/blob/main/public/images/side-bar.png)
+
+![dark-mode](https://github.com/kxwzhang/AwkwardBot/blob/main/public/images/dark-mode.png)
