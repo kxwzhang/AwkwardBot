@@ -3,23 +3,53 @@
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 370px) {
+@media only screen and (max-width: 380px) {
   html, body {
     display: flex;
   }
+
+  .text-to-speech .fa-moon, 
+  .text-to-speech .fa-stop-circle {
+    display: none;
+  }
 }
 
-/* .darkmode html {
-  background: black;
-} */
+@media only screen and (min-width: 381px) {
+  .controls-content .fa-moon,
+  .controls-content .fa-stop-circle,
+  .controls {
+    display: none;
+  }
+}
+
+
+.powered_by.dark,
+.dropbtn.dark,
+section.messages.dark,
+#message_replies.dark,
+footer.dark,
+footer input[type=text].dark {
+  background: rgb(40, 40, 40);
+}
+
+.bar-icon.dark,
+span.title.dark,
+.text-to-speech i.dark {
+  color: white;
+}
+
+button#send.dark {
+  color: rgb(228, 228, 255);
+}
 
 body,
 html {
   /* display: flex; */
+  background-color: black;
   margin: auto;
   padding: 0;
   font-size: 18px;
-  background-color: #FFF;
+  /* background-color: #FFF; */
   font-family: "helvetica", sans-serif;
 }
 
@@ -375,8 +405,8 @@ a.button:hover {
 /* Styling for Dropdown Button */
 /* Dropdown Button */
 .dropbtn {
-  background-color: #3498DB;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -385,7 +415,7 @@ a.button:hover {
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+  background-color: #d80792;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -402,6 +432,7 @@ a.button:hover {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  right: 0;
 }
 
 /* Links inside the dropdown */
@@ -419,3 +450,28 @@ a.button:hover {
 .show {display:block;}
 
 /*# sourceMappingURL=styles.css.map */
+
+.text-to-speech {
+  position: fixed;
+  right: 0;
+}
+
+.darkmode,
+.stopbtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
+.fa-moon:hover, .fa-stop-circle:hover {
+  color: #d80792;
+  cursor: pointer;
+}
+
+.sidebar {
+  color: white;
+}
+
+.dropbtn.sidebar{
+  background-color: #111;
+}

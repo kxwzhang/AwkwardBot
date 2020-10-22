@@ -5,6 +5,8 @@
         <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.4/dist/showdown.min.js"></script>
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+          integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/33497c357e.js" crossorigin="anonymous"></script>
     </head>
@@ -17,7 +19,7 @@
             <a href="https://alex-choy.com/" target="_blank"><i class="fas fa-globe"></i></a>
             <a href="https://www.linkedin.com/in/alexchoy179/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://angel.co/u/alex-choy-5" target="_blank"><i class="fab fa-angellist"></i></a>
-            <a href="https://github.com/alex-choy" target="_blank"><i class="fab fa-github"></i></a>
+           <a href="https://github.com/alex-choy" target="_blank"><i class="fab fa-github"></i></a>
           </div>
           <button class="collapsible">Winfred Huang</button>
           <div class="content">
@@ -33,18 +35,10 @@
             <a href="https://angel.co/u/kevinxzhang" target="_blank"><i class="fab fa-angellist"></i></a>
             <a href="https://github.com/kxwzhang" target="_blank"><i class="fab fa-github"></i></a>
           </div>
-        </div>
-
-        <div class='text-to-speech'>
-          <!-- <button id="speak">Play</button> -->
-          <button id="stop">Stop Text to Speech</button>
-          <div class="dropdown">
-            <button onclick="dropDownFunc()" class="dropbtn">Dropdown</button>
-            <div id="myDropdown" class="dropdown-content">
-              <select name="voice" id ="voices">
-                <option value="">Select a Voice</option>
-              </select>
-            </div>
+          <button class="controls collapsible">Controls</button>
+          <div class="controls-content content">
+            <button class="darkmode sidebar"><i class="far fa-moon"></i></button>
+            <button id="stop" class="stopbtn sidebar"><i class="far fa-stop-circle"></i></button>
           </div>
         </div>
 
@@ -57,10 +51,23 @@
             </div>
             <div class="powered_by">
               <div class="bar-icon" onclick="openNav()">&#9776;</div>
-              AwkwardBot
+              <span class="title">AwkwardBot</span>
+              <div class='text-to-speech'>
+                <button class="darkmode"><i class="far fa-moon"></i></button>
+                <!-- <button id="speak">Play</button> -->
+                <button id="stop" class="stopbtn"><i class="far fa-stop-circle"></i></button>
+                <div class="dropdown">
+                  <button onclick="dropDownFunc()" class="dropbtn"><i class="fas fa-caret-down"></i></button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <select name="voice" id="voices">
+                      <option value="">Select a Voice</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
             </div>
-            <section>
-                <div id="message_list">
+            <section class="messages">
+                <div id="message_list" class="">
                     <div id="message_template">
                         <div class="message {{message.type}}">
                             {{#if message.isTyping}}
@@ -93,7 +100,7 @@
             <footer>
                 <form onsubmit="Botkit.send(Botkit.input.value, event)">
                     <input type="text" autocomplete="off" id="messenger_input" placeholder="Type here..." />
-                    <button type="submit">Send</button>
+                    <button id="send" type="submit">Send</button>
                 </form>
             </footer>
         </div>
@@ -128,19 +135,6 @@
           function dropDownFunc() {
             document.getElementById("myDropdown").classList.toggle("show");
           }
-          // Close the dropdown menu if the user clicks outside of it
-          // window.onclick = function (event) {
-          //   if (!event.target.matches('.dropbtn')) {
-          //     var dropdowns = document.getElementsByClassName("dropdown-content");
-          //     var i;
-          //     for (i = 0; i < dropdowns.length; i++) {
-          //       var openDropdown = dropdowns[i];
-          //       if (openDropdown.classList.contains('show')) {
-          //         openDropdown.classList.remove('show');
-          //       }
-          //     }
-          //   }
-          // }
         </script>
         <script>
           //Scripts for Text to Speech
@@ -148,7 +142,7 @@
           let voices = [];
           const voicesDropdown = document.querySelector('[name="voice"]');
           // const speakButton = document.querySelector('#speak');
-          const stopButton = document.querySelector('#stop');
+          const stopButtons = document.querySelectorAll('.stopbtn');
           const messageList = document.querySelector('#message_list');
 
           // render all possible voices in a dropdown
@@ -181,8 +175,48 @@
           speechSynthesis.addEventListener('voiceschanged', populateVoices);
           voicesDropdown.addEventListener('change', setVoice);
           // speakButton.addEventListener('click', toggle);
-          stopButton.addEventListener('click', () => toggle(false));
+          stopButtons.forEach(btn => btn.addEventListener('click', () => toggle(false)));
+          
+        </script>
+        <script>
+          function toggleIconsDarkMode() {
+            const icons = document.querySelectorAll(".text-to-speech i");
+            icons.forEach(icon => icon.classList.toggle('dark'));
 
+            const hamburger = document.querySelector('.bar-icon');
+            hamburger.classList.toggle('dark');
+            
+            const title = document.querySelector('span.title');
+            title.classList.toggle('dark');
+
+            const send = document.querySelector('button#send');
+            send.classList.toggle('dark');
+          }
+
+          function enableDarkMode() {
+            toggleIconsDarkMode();
+            const nav = document.querySelector('.powered_by');
+            nav.classList.toggle('dark');
+
+            const dropbtn = document.querySelector('.dropbtn');
+            dropbtn.classList.toggle('dark');
+
+            const section = document.querySelector("section.messages");
+            section.classList.toggle('dark');
+
+            const messageReplies = document.querySelector("#message_replies");
+            messageReplies.classList.toggle('dark');
+            
+            const footer = document.querySelector("footer");
+            footer.classList.toggle('dark');
+
+            const footerInput = document.querySelector("footer input[type=text]");
+            footerInput.classList.toggle('dark');
+          }
+          const darkModeBtns = document.querySelectorAll('.darkmode');
+          darkModeBtns.forEach(btn => btn.addEventListener('click', enableDarkMode));
+                    
+        
         </script>
     </body>
 </html>
