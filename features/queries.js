@@ -12,7 +12,7 @@ module.exports = function(controller) {
   // Displays a message when a user connects
   controller.on('welcome_back', async(bot, message) => {
     await bot.reply(message, {
-      text: 'Hello Human! Which of my creators would you like to know more about?',
+      text: 'Hello Human! Here are the statuses of my creators:<br><br> Alex Choy: currently open/looking for work <br> Winfred Huang: currently open/looking for work <br> Kevin Zhang: currently open/looking for work <br><br> Which of my creators would you like to know more about?',
       quick_replies: [
         {
           title: 'Alex',
