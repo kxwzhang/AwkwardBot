@@ -109,119 +109,117 @@
                 </form>
             </footer>
         </div>
-        </div>
-        <script src="/client.js"></script>
-        <script>
-          function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
+      </div>
+      <script src="/client.js"></script>
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+
+        var coll = document.getElementsByClassName("collapsible");
+          var i;
+
+          for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+              this.classList.toggle("active");
+              var content = this.nextElementSibling;
+              if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+              } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+              }
+            });
           }
+      </script>
+      <script>
+        // Scripts for Dropdown
+        function dropDownFunc() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+      </script>
+      <script>
+        //Scripts for Text to Speech
+        const msg = new SpeechSynthesisUtterance();
+        let voices = [];
+        const voicesDropdown = document.querySelector('[name="voice"]');
+        // const speakButton = document.querySelector('#speak');
+        const stopButtons = document.querySelectorAll('.stopbtn');
+        const messageList = document.querySelector('#message_list');
 
-          function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
+        // render all possible voices in a dropdown
+        function populateVoices() {
+          voices = this.getVoices();
+          voicesDropdown.innerHTML = voices.filter(voice => voice.lang.includes('en'))
+            .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
+            .join('');
+        }
+
+        // chosen voice will update to find the correct voice linked
+        function setVoice() {
+          msg.voice = voices.find(voice => voice.name === this.value);
+          toggle();
+        }
+
+        function toggle(stop = true) {
+          speechSynthesis.cancel();
+          if (stop) {
+            speechSynthesis.speak(msg);
           }
+        }
 
-          var coll = document.getElementsByClassName("collapsible");
-            var i;
+        function playSound(e) {
+          msg.text = e.target.innerHTML;
+          toggle();
+        }
 
-            for (i = 0; i < coll.length; i++) {
-              coll[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                  content.style.maxHeight = null;
-                } else {
-                  content.style.maxHeight = content.scrollHeight + "px";
-                }
-              });
-            }
-        </script>
-        <script>
-          // Scripts for Dropdown
-          function dropDownFunc() {
-            document.getElementById("myDropdown").classList.toggle("show");
-          }
-        </script>
-        <script>
-          //Scripts for Text to Speech
-          const msg = new SpeechSynthesisUtterance();
-          let voices = [];
-          const voicesDropdown = document.querySelector('[name="voice"]');
-          // const speakButton = document.querySelector('#speak');
-          const stopButtons = document.querySelectorAll('.stopbtn');
-          const messageList = document.querySelector('#message_list');
-
-          // render all possible voices in a dropdown
-          function populateVoices() {
-            voices = this.getVoices();
-            voicesDropdown.innerHTML = voices.filter(voice => voice.lang.includes('en'))
-              .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
-              .join('');
-          }
-
-          // chosen voice will update to find the correct voice linked
-          function setVoice() {
-            msg.voice = voices.find(voice => voice.name === this.value);
-            toggle();
-          }
-
-          function toggle(stop = true) {
-            speechSynthesis.cancel();
-            if (stop) {
-              speechSynthesis.speak(msg);
-            }
-          }
-
-          function playSound(e) {
-            msg.text = e.target.innerHTML;
-            toggle();
-          }
-
-          messageList.addEventListener('click', playSound);
-          speechSynthesis.addEventListener('voiceschanged', populateVoices);
-          voicesDropdown.addEventListener('change', setVoice);
-          // speakButton.addEventListener('click', toggle);
-          stopButtons.forEach(btn => btn.addEventListener('click', () => toggle(false)));
-          
-        </script>
-        <script>
-          function toggleIconsDarkMode() {
-            const icons = document.querySelectorAll(".text-to-speech i");
-            icons.forEach(icon => icon.classList.toggle('dark'));
-
-            const hamburger = document.querySelector('.bar-icon');
-            hamburger.classList.toggle('dark');
-            
-            const title = document.querySelector('span.title');
-            title.classList.toggle('dark');
-
-            const send = document.querySelector('button#send');
-            send.classList.toggle('dark');
-          }
-
-          function enableDarkMode() {
-            toggleIconsDarkMode();
-            const nav = document.querySelector('.powered_by');
-            nav.classList.toggle('dark');
-
-            const dropbtn = document.querySelector('.dropbtn');
-            dropbtn.classList.toggle('dark');
-
-            const section = document.querySelector("section.messages");
-            section.classList.toggle('dark');
-
-            const messageReplies = document.querySelector("#message_replies");
-            messageReplies.classList.toggle('dark');
-            
-            const footer = document.querySelector("footer");
-            footer.classList.toggle('dark');
-
-            const footerInput = document.querySelector("footer input[type=text]");
-            footerInput.classList.toggle('dark');
-          }
-          const darkModeBtns = document.querySelectorAll('.darkmode');
-          darkModeBtns.forEach(btn => btn.addEventListener('click', enableDarkMode));
-                    
+        messageList.addEventListener('click', playSound);
+        speechSynthesis.addEventListener('voiceschanged', populateVoices);
+        voicesDropdown.addEventListener('change', setVoice);
+        // speakButton.addEventListener('click', toggle);
+        stopButtons.forEach(btn => btn.addEventListener('click', () => toggle(false)));
         
-        </script>
+      </script>
+      <script>
+        function toggleIconsDarkMode() {
+          const icons = document.querySelectorAll(".text-to-speech i");
+          icons.forEach(icon => icon.classList.toggle('dark'));
+
+          const hamburger = document.querySelector('.bar-icon');
+          hamburger.classList.toggle('dark');
+          
+          const title = document.querySelector('span.title');
+          title.classList.toggle('dark');
+
+          const send = document.querySelector('button#send');
+          send.classList.toggle('dark');
+        }
+
+        function enableDarkMode() {
+          toggleIconsDarkMode();
+          const nav = document.querySelector('.powered_by');
+          nav.classList.toggle('dark');
+
+          const dropbtn = document.querySelector('.dropbtn');
+          dropbtn.classList.toggle('dark');
+
+          const section = document.querySelector("section.messages");
+          section.classList.toggle('dark');
+
+          const messageReplies = document.querySelector("#message_replies");
+          messageReplies.classList.toggle('dark');
+          
+          const footer = document.querySelector("footer");
+          footer.classList.toggle('dark');
+
+          const footerInput = document.querySelector("footer input[type=text]");
+          footerInput.classList.toggle('dark');
+        }
+        const darkModeBtns = document.querySelectorAll('.darkmode');
+        darkModeBtns.forEach(btn => btn.addEventListener('click', enableDarkMode));
+      </script>
     </body>
 </html>
