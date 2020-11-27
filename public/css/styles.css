@@ -56,6 +56,7 @@ html {
 .wrapper {
   position: relative;
   margin: 0 auto;
+  display: none;
 }
 .wrapper:after {
   content: "";
@@ -474,4 +475,28 @@ a.button:hover {
 
 .dropbtn.sidebar{
   background-color: #111;
+}
+
+/* landing page */
+
+.landing-page {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.landing-area {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.landing-text {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+.landing-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 40px;
 }

@@ -14,8 +14,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/33497c357e.js" crossorigin="anonymous"></script>
         <link rel="icon" href="https://awkwardbot.herokuapp.com/favicon.png">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
     <body >
+      <div class="landing-page">
+        <div class="landing-area">
+          <div class="landing-text">
+            <div class="landing-title">AwkwardBot</div>
+            <div>
+              Um hi there! Sorry for being awkward but would you like to um, know more about my creators?
+            </div>
+            <button onclick="unhideWrapper()">Let's Go!</button>
+          </div>
+        </div>
+      </div>
       <div class="wrapper">
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -139,6 +153,12 @@
         // Scripts for Dropdown
         function dropDownFunc() {
           document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Script to unhide chatbot and hide landing page
+        function unhideWrapper() {
+          document.querySelector(".landing-page").style.setProperty('display', 'none');
+          document.querySelector(".wrapper").style.setProperty('display', 'block');
         }
       </script>
       <script>
