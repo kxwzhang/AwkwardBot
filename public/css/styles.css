@@ -503,6 +503,10 @@ a.button:hover {
   margin-right: 10px;
 }
 
+.landing-subtext {
+  text-align: center;
+}
+
 .landing-title {
   font-family: 'Orbitron', sans-serif;
   font-size: 40px;
@@ -525,4 +529,34 @@ a.button:hover {
 .fa-rocketchat {
   font-size: 200px;
   color: #d80792;
+}
+
+@media only screen and (max-width: 550px){
+  .landing-area {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .landing-text {
+    margin: 10px;
+  }
+
+  .landing-btn {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 300px){
+  .fa-rocketchat {
+    font-size: 150px;
+  }
+
+  .landing-title {
+    font-size: 30px;
+  }
+
+  .landing-subtext {
+    font-size: 15px;
+  }
 }
